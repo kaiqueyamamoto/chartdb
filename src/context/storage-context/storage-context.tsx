@@ -58,6 +58,7 @@ export interface StorageContext {
     }) => Promise<DBTable | undefined>;
     updateTable: (params: {
         id: string;
+        diagramId?: string;
         attributes: Partial<DBTable>;
     }) => Promise<void>;
     putTable: (params: { diagramId: string; table: DBTable }) => Promise<void>;
@@ -76,6 +77,7 @@ export interface StorageContext {
     }) => Promise<DBRelationship | undefined>;
     updateRelationship: (params: {
         id: string;
+        diagramId?: string;
         attributes: Partial<DBRelationship>;
     }) => Promise<void>;
     deleteRelationship: (params: {
@@ -113,6 +115,7 @@ export interface StorageContext {
     }) => Promise<Area | undefined>;
     updateArea: (params: {
         id: string;
+        diagramId?: string;
         attributes: Partial<Area>;
     }) => Promise<void>;
     deleteArea: (params: { diagramId: string; id: string }) => Promise<void>;
@@ -130,6 +133,7 @@ export interface StorageContext {
     }) => Promise<DBCustomType | undefined>;
     updateCustomType: (params: {
         id: string;
+        diagramId?: string;
         attributes: Partial<DBCustomType>;
     }) => Promise<void>;
     deleteCustomType: (params: {
@@ -147,6 +151,7 @@ export interface StorageContext {
     }) => Promise<Note | undefined>;
     updateNote: (params: {
         id: string;
+        diagramId?: string;
         attributes: Partial<Note>;
     }) => Promise<void>;
     deleteNote: (params: { diagramId: string; id: string }) => Promise<void>;

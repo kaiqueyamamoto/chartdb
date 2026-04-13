@@ -489,7 +489,7 @@ export const ChartDBProvider: React.FC<
             setDiagramUpdatedAt(updatedAt);
             await Promise.all([
                 db.updateDiagram({ id: diagramId, attributes: { updatedAt } }),
-                db.updateTable({ id, attributes: table }),
+                db.updateTable({ id, diagramId, attributes: table }),
             ]);
 
             if (!!prevTable && options.updateHistory) {
@@ -698,6 +698,7 @@ export const ChartDBProvider: React.FC<
                 db.updateDiagram({ id: diagramId, attributes: { updatedAt } }),
                 db.updateTable({
                     id: tableId,
+                    diagramId,
                     attributes: {
                         ...updateTableFn(table),
                     },
@@ -771,6 +772,7 @@ export const ChartDBProvider: React.FC<
                 db.updateDiagram({ id: diagramId, attributes: { updatedAt } }),
                 db.updateTable({
                     id: tableId,
+                    diagramId,
                     attributes: {
                         ...updateTableFn(table),
                     },
@@ -810,6 +812,7 @@ export const ChartDBProvider: React.FC<
                     if (table.id === tableId) {
                         db.updateTable({
                             id: tableId,
+                            diagramId,
                             attributes: {
                                 ...table,
                                 fields: [...table.fields, field],
@@ -917,6 +920,7 @@ export const ChartDBProvider: React.FC<
                 db.updateDiagram({ id: diagramId, attributes: { updatedAt } }),
                 db.updateTable({
                     id: tableId,
+                    diagramId,
                     attributes: {
                         ...dbTable,
                         indexes: [...dbTable.indexes, index],
@@ -971,6 +975,7 @@ export const ChartDBProvider: React.FC<
                 db.updateDiagram({ id: diagramId, attributes: { updatedAt } }),
                 db.updateTable({
                     id: tableId,
+                    diagramId,
                     attributes: {
                         ...dbTable,
                         indexes: dbTable.indexes.filter(
@@ -1043,6 +1048,7 @@ export const ChartDBProvider: React.FC<
                 db.updateDiagram({ id: diagramId, attributes: { updatedAt } }),
                 db.updateTable({
                     id: tableId,
+                    diagramId,
                     attributes: {
                         ...dbTable,
                         indexes: dbTable.indexes.map((i) =>
@@ -1099,6 +1105,7 @@ export const ChartDBProvider: React.FC<
                     }),
                     db.updateTable({
                         id: tableId,
+                        diagramId,
                         attributes: {
                             ...dbTable,
                             checkConstraints: [
@@ -1176,6 +1183,7 @@ export const ChartDBProvider: React.FC<
                     }),
                     db.updateTable({
                         id: tableId,
+                        diagramId,
                         attributes: {
                             ...dbTable,
                             checkConstraints: (
@@ -1241,6 +1249,7 @@ export const ChartDBProvider: React.FC<
                     }),
                     db.updateTable({
                         id: tableId,
+                        diagramId,
                         attributes: {
                             ...dbTable,
                             checkConstraints: (
@@ -1437,7 +1446,11 @@ export const ChartDBProvider: React.FC<
                         id: diagramId,
                         attributes: { updatedAt },
                     }),
-                    db.updateRelationship({ id, attributes: relationship }),
+                    db.updateRelationship({
+                        id,
+                        diagramId,
+                        attributes: relationship,
+                    }),
                 ]);
 
                 if (!!prevRelationship && options.updateHistory) {
@@ -1729,7 +1742,7 @@ export const ChartDBProvider: React.FC<
 
             await Promise.all([
                 db.updateDiagram({ id: diagramId, attributes: { updatedAt } }),
-                db.updateArea({ id, attributes: area }),
+                db.updateArea({ id, diagramId, attributes: area }),
             ]);
 
             if (!!prevArea && options.updateHistory) {
@@ -1853,7 +1866,7 @@ export const ChartDBProvider: React.FC<
 
             await Promise.all([
                 db.updateDiagram({ id: diagramId, attributes: { updatedAt } }),
-                db.updateNote({ id, attributes: note }),
+                db.updateNote({ id, diagramId, attributes: note }),
             ]);
 
             if (!!prevNote && options.updateHistory) {
@@ -2073,7 +2086,7 @@ export const ChartDBProvider: React.FC<
 
             await Promise.all([
                 db.updateDiagram({ id: diagramId, attributes: { updatedAt } }),
-                db.updateCustomType({ id, attributes: customType }),
+                db.updateCustomType({ id, diagramId, attributes: customType }),
             ]);
 
             if (!!prevCustomType && options.updateHistory) {

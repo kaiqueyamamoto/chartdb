@@ -24,7 +24,16 @@
       "Bash(xargs -I {} basename {})",
       "Bash(npx tsc:*)",
       "Bash(pnpm --version)",
-      "Bash(npx eslint:*)"
+      "Bash(npx eslint:*)",
+      "Bash(ls server/src/routes/)",
+      "Bash(ls server/src/models/)",
+      "Bash(ls src/components/protected-route/)",
+      "Bash(cat src/components/protected-route/protected-route.tsx)",
+      "Bash(sed -n '808,820p' src/context/chartdb-context/chartdb-provider.tsx)",
+      "Bash(sed -n '915,925p' src/context/chartdb-context/chartdb-provider.tsx)",
+      "Bash(sed -n '969,975p' src/context/chartdb-context/chartdb-provider.tsx)",
+      "Bash(sed -n '1041,1048p' src/context/chartdb-context/chartdb-provider.tsx)",
+      "Bash(sed -n '1097,1104p' src/context/chartdb-context/chartdb-provider.tsx)"
     ]
   }
 }

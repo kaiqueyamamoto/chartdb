@@ -101,7 +101,7 @@ router.get(
     '/me',
     authenticate,
     async (req: Request, res: Response): Promise<void> => {
-        const user = await User.findById(req.userId).select('-passwordHash');
+        const user = await User.findById(req.userId, { passwordHash: 0 });
         if (!user) {
             res.status(401).json({ error: 'Unauthorized' });
             return;
