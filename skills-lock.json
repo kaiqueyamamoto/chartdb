@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "frontend-design": {
+      "source": "stevengonsalvez/agents-in-a-box",
+      "sourceType": "github",
+      "computedHash": "9d2791229aed16e08242b8daf8fe53dfb563dd622a548fa0c13a0b91a62e401f"
+    },
+    "wcag-design": {
+      "source": "alexsnchz/skills",
+      "sourceType": "github",
+      "computedHash": "a2605f009a505cce18c0a47e23e70da0b63a2d1761150362bba07892d5f171bf"
+    }
+  }
+}

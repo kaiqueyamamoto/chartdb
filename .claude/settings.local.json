@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/yamam/.agents/skills/tailwind-css/**)",
+      "Read(//c/Users/yamam/.agents/skills/typescript-advanced-types/**)",
+      "Read(//c/Users/yamam/.agents/skills/vercel-react-best-practices/**)",
+      "Bash(mkdir -p d:/Developer/kaiqueyamamoto/chartdb/.claude/skills/nextjs-react-typescript)",
+      "Bash(mkdir -p d:/Developer/kaiqueyamamoto/chartdb/.claude/skills/tailwind-css)",
+      "Bash(mkdir -p d:/Developer/kaiqueyamamoto/chartdb/.claude/skills/typescript-advanced-types)",
+      "Bash(mkdir -p d:/Developer/kaiqueyamamoto/chartdb/.claude/skills/vercel-react-best-practices)",
+      "Bash(cp ~/.claude/skills/nextjs-react-typescript/SKILL.md d:/Developer/kaiqueyamamoto/chartdb/.claude/skills/nextjs-react-typescript/SKILL.md)",
+      "Bash(cp ~/.claude/skills/tailwind-css/SKILL.md d:/Developer/kaiqueyamamoto/chartdb/.claude/skills/tailwind-css/SKILL.md)",
+      "Bash(cp ~/.claude/skills/typescript-advanced-types/SKILL.md d:/Developer/kaiqueyamamoto/chartdb/.claude/skills/typescript-advanced-types/SKILL.md)",
+      "Bash(cp ~/.claude/skills/vercel-react-best-practices/SKILL.md d:/Developer/kaiqueyamamoto/chartdb/.claude/skills/vercel-react-best-practices/SKILL.md)",
+      "Bash(npx skills:*)",
+      "Bash(gh auth:*)",
+      "Bash(GH_TOKEN=$\\(gh auth token\\) npx skills add 404kidwiz/claude-supercode-skills@frontend-ui-ux-engineer -y)",
+      "Bash(git config:*)",
+      "Bash(git ls-remote:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}
