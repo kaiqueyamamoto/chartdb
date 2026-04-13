@@ -1,0 +1,61 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: chartdb
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', 'db.adminCommand("ping")']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    restart: unless-stopped
+    ports:
+      - '3001:3001'
+    depends_on:
+      mongo:
+        condition: service_healthy
+    environment:
+      PORT: 3001
+      MONGO_URI: mongodb://mongo:27017/chartdb
+      JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-change_me_access_secret}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-change_me_refresh_secret}
+      JWT_ACCESS_EXPIRES_IN: ${JWT_ACCESS_EXPIRES_IN:-15m}
+      JWT_REFRESH_EXPIRES_IN: ${JWT_REFRESH_EXPIRES_IN:-7d}
+      CLIENT_ORIGIN: ${CLIENT_ORIGIN:-http://localhost:5173}
+      NODE_ENV: ${NODE_ENV:-production}
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://localhost:3001/api/health']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_OPENAI_API_KEY: ${VITE_OPENAI_API_KEY:-}
+        VITE_OPENAI_API_ENDPOINT: ${VITE_OPENAI_API_ENDPOINT:-}
+        VITE_LLM_MODEL_NAME: ${VITE_LLM_MODEL_NAME:-}
+        VITE_DISABLE_ANALYTICS: ${VITE_DISABLE_ANALYTICS:-false}
+    restart: unless-stopped
+    ports:
+      - '5173:80'
+    depends_on:
+      server:
+        condition: service_healthy
+
+volumes:
+  mongo_data:

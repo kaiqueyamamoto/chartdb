@@ -1,45 +1,53 @@
-# Ignore node_modules and build directories
+# Dependencies
 node_modules
+server/node_modules
+
+# Build outputs
 dist
+server/dist
 build
 
-# Ignore logs
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
 
-# Ignore local environment files
+# Lock files (pnpm-lock.yaml is intentionally kept for reproducible installs)
+package-lock.json
+yarn.lock
+
+# Local environment
 .env
 .env.local
 .env.*.local
 
-# Ignore Dockerfile and Docker Compose files
+# Docker artifacts
 Dockerfile
 docker-compose.yml
+.dockerignore
 
-# Ignore git files
+# Git
 .git
 .gitignore
 
-# Ignore IDE and editor settings
+# IDE
 .vscode/
 .idea/
 
-# Ignore tests and documentation
+# Tests and coverage
 __tests__/
 test/
 tests/
 spec/
+coverage
+
+# Docs (except README kept for context)
 *.md
 
-# Ignore temporary files
+# Misc
 *.swp
 *.swo
 *.DS_Store
-*.log
-*.lock
 *.tmp
-
-# Ignore coverage output
-coverage

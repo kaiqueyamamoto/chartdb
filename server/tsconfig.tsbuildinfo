@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/middleware/authenticate.ts","./src/models/user.model.ts","./src/routes/auth.routes.ts","./src/types/express.d.ts","./src/utils/jwt.ts","./src/utils/set-auth-cookies.ts"],"errors":true,"version":"5.9.3"}
